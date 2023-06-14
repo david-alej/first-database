@@ -1,0 +1,27 @@
+CREATE TABLE churches (
+  id integer PRIMARY KEY,
+  name varchar,
+  country varchar,
+  state varchar,
+  street_address varchar,
+  zipcode integer
+);
+
+CREATE TABLE persons (
+    id integer PRIMARY KEY,
+	church_id integer REFERENCES churches (id),
+	first_name varchar,
+	last_name varchar
+);
+
+CREATE TABLE positions (
+	id integer PRIMARY KEY,
+	name varchar,
+	description text
+);
+
+CREATE TABLE persons_positions (
+	person_id integer REFERENCES persons (id),
+	positions integer REFERENCES positions(id)
+);
+

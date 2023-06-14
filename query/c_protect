@@ -1,0 +1,66 @@
+/*
+Here I protect my databse by assinging constraints and roles
+*/
+
+-- Here I ant certain columns to be filled when data is inserted
+-- churches table
+ALTER TABLE churches
+ALTER COLUMN id SET NOT NULL;
+
+ALTER TABLE churches
+ALTER COLUMN name SET NOT NULL;
+
+ALTER TABLE churches
+ALTER COLUMN country SET NOT NULL;
+
+ALTER TABLE churches
+ALTER COLUMN state SET NOT NULL;
+
+-- persons table
+ALTER TABLE persons
+ALTER COLUMN id SET NOT NULL;
+
+ALTER TABLE persons
+ALTER COLUMN church_id SET NOT NULL;
+
+ALTER TABLE persons
+ALTER COLUMN first_name SET NOT NULL;
+
+ALTER TABLE persons
+ALTER COLUMN last_name SET NOT NULL;
+
+--persons_positions table
+ALTER TABLE persons_positions
+ALTER COLUMN person_id SET NOT NULL;
+
+-- Renaming column positions to position_id
+ALTER TABLE persons_positions
+RENAME COLUMN positions TO position_id;
+
+ALTER TABLE persons_positions
+ALTER COLUMN position_id SET NOT NULL;
+
+-- positions table
+ALTER TABLE positions
+ALTER COLUMN id SET NOT NULL;
+
+ALTER TABLE positions
+ALTER COLUMN name SET NOT NULL;
+
+--Now I want to set some columns to a certain value
+--I want only countries in US or Canada that corespond to one president
+ALTER TABLE churches 
+ADD CHECK (lower(country) IN ('united states', 'canada'));
+
+-- Then I set roles with specific permissions
+CREATE ROLE marcos WITH LOGIN NOSUPERUSER;
+
+CREATE ROLE pastors WITH NOLOGIN NOSUPERUSER ROLE marcos;
+
+GRANT USAGE ON SCHEMA public TO pastors;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO pastors;
+
+-- Make sure not to insert any names that are marcos
+CREATE POLICY slct_row ON public.persons 
+FOR SELECT TO pastors USING (lower(first_name) = lower(current_user));
+ALTER TABLE public.persons ENABLE ROW LEVEL SECURITY;

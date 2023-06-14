@@ -1,0 +1,15 @@
+/*
+Optimizing database by using indexes and normalizing 
+*/
+
+-- Starting with normalizing I believe my database is fully normalized except for maybe
+-- creating anther table named address to house the church's address's but it is going
+-- to be exceptionally rare that two churches are in the same address like an appartment
+-- so its not worth it.
+
+-- Next indexes here I decide to put an index on churches.name so that it is quicker to 
+-- search for but I will not make it a cluster since there are going to be many churches I didn't 
+-- add. So making this cluster is not worth it because I will need to recluster it after every update.
+
+-- Creating the index on churches.name
+CREATE INDEX churches_name_idx ON churches ( name);

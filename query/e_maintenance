@@ -1,0 +1,5 @@
+/*
+Maintaining database by consuming less disk space after modifications to data
+*/
+
+-- Havent made any madifications yets that can lessen disk space

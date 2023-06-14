@@ -1,0 +1,87 @@
+/*
+---------------------------------
+Positions
+---------------------------------
+*/
+INSERT INTO positions
+VALUES ( 1, 'president', 'Makes decisions for the church of their country and manages vice-presidents.');
+
+INSERT INTO positions
+VALUES ( 2, 'vice-president', 'Manage representatives in a multi-state level.');
+
+INSERT INTO positions
+VALUES ( 3, 'superintendent', 'Manage representative in a state level.');
+
+INSERT INTO positions
+VALUES ( 4, 'representatives', 'Manage local pastors in the city level');
+
+INSERT INTO positions
+VALUES ( 5, 'local-pastors', 'The leader of the a church.');
+
+INSERT INTO positions
+VALUES ( 6, 'layman', 'A church goer.');
+
+INSERT INTO positions
+VALUES ( 7, 'mediator', 'Person in a group called mediators that mediate information between presidents of different countries.');
+
+INSERT INTO positions
+VALUES ( 8, 'elder', 'Advises church leader with decisions or problems');
+
+INSERT INTO positions
+VALUES ( 9, 'ministor', 'A person in the church that has completed a courses that teach Christianity.');
+
+INSERT INTO positions
+VALUES ( 10, 'congressional ministor', 'A person in the church with that has completed a higher level of courses after becoming a ministor.' );
+/*
+---------------------------------
+Churches
+---------------------------------
+*/
+INSERT INTO churches (id, name, country, state, street_address, zipcode)
+VALUES ( 1, 'Jireh', 'United States', 'Texas', '414 Shiloh Dr UNIT 8', 78045);
+
+INSERT INTO churches 
+VALUES ( 2, 'Rapha', 'United States', 'California', '10808 Le Conte Ave', 90024);
+
+INSERT INTO churches 
+VALUES ( 3, 'Nissi', 'United States', 'Florida', '450 S State Rd 7', 33023);
+
+INSERT INTO churches 
+VALUES ( 4, 'Shaddai', 'United States', 'South Dakota', '201 Golf Course Rd', 57201);
+
+
+/*
+---------------------------------
+Persons & Persons_Positions
+---------------------------------
+*/
+
+INSERT INTO persons (id, church_id, first_name, last_name)
+VALUES ( 1, 1, 'Marcos', 'Alexander');
+
+INSERT INTO persons_positions (person_id, positions)
+VALUES ( 1, 5);
+
+---------------------------------
+
+INSERT INTO persons (id, church_id, first_name, last_name)
+VALUES ( 2, 2, 'Paul', 'Jones');
+
+INSERT INTO persons_positions (person_id, positions)
+VALUES ( 2, 4);
+
+---------------------------------
+
+INSERT INTO persons (id, church_id, first_name, last_name)
+VALUES ( 3, 3, 'Timothy', 'Stevens');
+
+INSERT INTO persons_positions (person_id, positions)
+VALUES ( 3, 6);
+
+---------------------------------
+
+INSERT INTO persons (id, church_id, first_name, last_name)
+VALUES ( 4, 4, 'Emily', 'Wang');
+
+INSERT INTO persons_positions (person_id, positions)
+VALUES ( 4, 2);
